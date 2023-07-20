@@ -43,10 +43,16 @@ async function fetchIPAdressInfo(ipAddress) {
 // show user info
 async function showUserData(ipAddress) {
   const data = await fetchIPAdressInfo(ipAddress);
-  elIpAdress.textContent = data.ip;
-  elLocation.textContent = `${data.location.city},${data.location.country}`;
-  elTimezone.textContent = `UTC${data.location.timezone}`;
-  elISP.textContent = data.isp;
+  elIpAdress.textContent = data.ip ? data.ip : "Not Found";
+  elLocation.textContent = `${
+    data.location.country || data.location.city
+      ? `${data.location.city},${data.location.country}`
+      : "Not found"
+  }`;
+  elTimezone.textContent = `UTC${
+    data.location.timezone ? data.location.timezone : "Not found"
+  }`;
+  elISP.textContent = data.isp ? data.isp : "Not found";
 
   var myLatLng = new L.LatLng(data.location.lat, data.location.lng);
   //Setting the map and marker to the fetched location
