@@ -57,15 +57,21 @@ main {
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
 }
+#search-input:hover{
+  cursor: pointer;
+}
 #search-input::placeholder {
   font-weight: var(--Font-w3);
   color: var(--Cl-Dark-Gray);
 }
-
 #search-btn {
   padding: 1rem;
   border: none;
   background-color: black;
+}
+#search-btn:hover{
+  cursor: pointer;
+  opacity: 0.8;
 }
 .output-section {
   display: flex;
