@@ -8,6 +8,21 @@ const elLocation = document.getElementById("Location-output");
 const elTimezone = document.getElementById("Timezone-output");
 const elISP = document.getElementById("ISP-output");
 
+var map = L.map("map", { zoomControl: false }).setView([0, 0], 13);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 49,
+}).addTo(map);
+//Creating custom icon
+var customIcon = L.icon({
+  iconUrl: "./images/icon-location.svg",
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+});
+// Adding custom icon to the map
+var marker = L.marker([0, 0], {
+  icon: customIcon,
+}).addTo(map);
+
 //Fetches the user's current location and shows the info fetched from the ipfy api
 async function GetUserIP() {
   await fetch("https://api.ipify.org?format=json")
@@ -32,27 +47,11 @@ async function showUserData(ipAddress) {
   elLocation.textContent = `${data.location.city},${data.location.country}`;
   elTimezone.textContent = `UTC${data.location.timezone}`;
   elISP.textContent = data.isp;
-  //Creating custom icon
-  var customIcon = L.icon({
-    iconUrl: "./images/icon-location.svg",
-    iconSize: [32, 32], 
-    iconAnchor: [16, 32], 
-  });
 
-  console.log(data.location.lat, data.location.lng);
   var myLatLng = new L.LatLng(data.location.lat, data.location.lng);
-  //Creating map
-  var map = L.map("map", { zoomControl: false }).setView(
-    myLatLng,
-    13
-  );
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 49,
-  }).addTo(map);
-  // Adding custom icon to the map
-  var marker = L.marker(myLatLng, {
-    icon: customIcon,
-  }).addTo(map);
+  //Setting the map and marker to the fetched location
+  map.setView(myLatLng, 13);
+  marker.setLatLng(myLatLng);
 }
 
 // Initial Page Load
@@ -68,4 +67,3 @@ elSearchBtn.addEventListener("click", (e) => {
     window.location.reload();
   }
 });
-
