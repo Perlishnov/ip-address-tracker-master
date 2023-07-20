@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <title>Frontend Mentor | IP Address Tracker</title>
+
+  </head>
+  <body>
+    <main>
+      <section class="backward-section">
+        <div class="background-pattern"></div>
+        <div id="map"></div>
+      </section>
+      <section class="ip-app">
+        <h1 class="principal-title">IP Address Tracker</h1>
+        <form class="input-section">
+          <input
+            type="text"
+            placeholder="Search for any IP address or domain"
+            pattern="/((([0-9a-fA-F]){1,4})\:){7}([0-9a-fA-F]){1,4}/"
+            name="search-input"
+            id="search-input"
+          /><button id="search-btn">
+            <img src="./images/icon-arrow.svg" alt="" srcset="" />
+          </button>
+        </form>
+        <div class="output-section">
+          <div class="output-column">
+            <div class="description-title">IP Address</div>
+            <output id="IPAdress-output">192.212.174.101</output>
+          </div>
+          <div class="output-column">
+            <div class="description-title">Location</div>
+            <output id="Location-output">Brooklyn, NY 10001</output>
+          </div>
+          <div class="output-column">
+            <div class="description-title">Timezone</div>
+            <output id="Timezone-output">UTC-05:00</output>
+          </div>
+          <div class="output-column">
+            <div class="description-title">ISP</div>
+            <output id="ISP-output">SpaceX Starlink</output>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

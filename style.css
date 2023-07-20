@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --Cl-Very-Dark-Gray: hsl(0, 0%, 17%);
+  --Cl-Dark-Gray: hsl(0, 0%, 59%);
+  --Font-size-text-input: 18px;
+  --Font-w1: 700;
+  --Font-w2: 500;
+  --Font-w3: 400;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+main {
+  position: relative;
+}
+#map {
+  height: 70vh;
+  z-index: 1;
+}
+.background-pattern {
+  height: 30vh;
+  background-image: url("./images/pattern-bg-desktop.png");
+}
+.backward-section {
+  height: 100vh;
+}
+.ip-app {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+.ip-app > * + * {
+  margin-top: 2em;
+}
+.principal-title {
+  color: white;
+  font-weight: var(--Font-w2);
+  text-align: center;
+  margin-top: 1rem;
+}
+.input-section {
+  display: flex;
+  background-color: white;
+  width: 60vh;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+#search-input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+#search-input::placeholder {
+  font-weight: var(--Font-w3);
+  color: var(--Cl-Dark-Gray);
+}
+
+#search-btn {
+  padding: 1rem;
+  border: none;
+  background-color: black;
+}
+.output-section {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  background: white;
+  padding: 1rem;
+  position: relative;
+  transform: translateY(5%);
+  border-radius: 1rem;
+  box-shadow: 1px 29px 45px 18px rgba(150, 150, 150, 0.42);
+  -webkit-box-shadow: 1px 29px 45px 18px rgba(150, 150, 150, 0.42);
+  -moz-box-shadow: 1px 29px 45px 18px rgba(150, 150, 150, 0.42);
+}
+.output-section > * {
+  flex-basis: 100%;
+}
+.output-section > * + * {
+  border-left: 1px solid #ccc;
+}
+.output-column {
+  padding: 1rem;
+}
+.output-column > * + * {
+  margin-top: 2rem;
+}
+.description-title {
+  color: var(--Cl-Dark-Gray);
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  letter-spacing: 0.1rem;
+}
+output {
+  font-size: 2rem;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .background-pattern {
+    background-image: url("./images/pattern-bg-mobile.png");
+    height: 40vh;
+  }
+  #map{
+    height: 60vh;
+  }
+  .input-section{
+    width: 90%;
+  }
+  .output-section {
+    width: 90%;
+    flex-direction: column;
+  }
+  .output-section > * + * {
+    border-left: none;
+  }
+  .output-column {
+    text-align: center;
+  }
+  output {
+    font-size: 1.25rem;
+  }
+}
